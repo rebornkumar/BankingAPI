@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class BankingServiceImpl  implements BankingService {
 
     @Autowired
@@ -23,7 +24,6 @@ public class BankingServiceImpl  implements BankingService {
     @Override
     public void createTransaction() {
         transactionRepo.
-
     }
 
     @Override
