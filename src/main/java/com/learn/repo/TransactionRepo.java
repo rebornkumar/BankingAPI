@@ -2,6 +2,10 @@ package com.learn.repo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import com.learn.entity.Transaction;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -19,7 +23,7 @@ public interface TransactionRepo extends JpaRepository<Transaction,Integer> {
     void create(Integer id,Long accountNo,Date date, String transactionDetail, Date valueDate, Integer withdrawalAmount, Integer depositAmount, Integer balanceAmount);
 
     @Modifying
-    @Transactinal
+    @Transactional
     @Query(value = "update transaction SET transaction_detail = ?3, value_date = ?4, withdrawal_amount = ?5, deposit_amount = ?6, balance_amount = ?6 where id = ?1 and account_no = ?2", nativeQuery = true)
     void update(Integer id,Long accountNo, String transactionDetail, Date valueDate, Integer withdrawalAmount, Integer depositAmount, Integer balanceAmount);
 

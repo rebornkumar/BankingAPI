@@ -9,8 +9,8 @@ public interface BankingService {
     //create,update,delete and search methods
     List<Transaction> searchTransaction(Long accountNo);
 
-    void createTransaction();
-    void updateTransaction();
-    void deleteTransation();
+    public void createTransaction(Transaction transaction);
+    public void updateTransaction(Transaction transaction);
+    public void deleteTransation(Integer id);
 
 }

@@ -1,8 +1,9 @@
 package com.learn.controller;
 
+import com.learn.entity.Transaction;
+import com.learn.service.BankingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -13,24 +14,24 @@ public class BankingController {
     private BankingService bankingService;
 
     @GetMapping(value = "/getAll")
-    public List<Transaction> getTransaction() {
-        bankingService.findAll();
+    public List<Transaction> getTransaction(@RequestParam Long accountNo) {
+        return bankingService.searchTransaction(accountNo);
     }
 
     @PostMapping(value = "/create")
     public void createEmployee(@RequestBody Transaction transaction) {
-        bankingService.create();
+        bankingService.createTransaction(transaction);
 
     }
     @PutMapping(value = "/update")
     public void updateEmployee(@RequestBody Transaction transaction) {
-        bankingService.update();
+        bankingService.updateTransaction(transaction);
 
     }
 
     @DeleteMapping(value = "/deleteById")
     public void deleteEmployee(@RequestParam Integer id) {
-        employeeService.deleteEmployee(id);
+        bankingService.deleteTransation(id);
 
     }
 
